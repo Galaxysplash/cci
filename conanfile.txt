@@ -1,9 +1,0 @@
-# uncomment for external dependencies
-# [requires]
-# dependency 1
-# dependency 2
-# ...
-
-[generators]
-CMakeDeps
-CMakeToolchain
