@@ -29,6 +29,11 @@ auto Helpers::check_args(const int argc) -> bool
     return false;
 }
 
+auto Helpers::make_project_directory(const std::stringstream &project_directory) -> void
+{
+    std::filesystem::create_directory(project_directory.str());
+}
+
 auto Helpers::create_file(
     const std::string &project_dir,
     const std::string &file_name,
@@ -42,16 +47,26 @@ auto Helpers::create_file(
     file_creator.close();
 }
 
-auto Helpers::create_folder(
-    const std::string &project_dir,
-    const std::string &folder_name) -> void
+auto Helpers::make_directories(
+    const std::stringstream &project_directory,
+    const std::initializer_list<std::string> &directory_names) -> void
 {
-    std::stringstream stringstream;
-    stringstream << project_dir << "/" << folder_name;
-    std::filesystem::create_directory(stringstream.str());
+    for (const std::string &directory_name : directory_names)
+    {
+        make_directory(project_directory, directory_name);
+    }
 }
 
-auto Helpers::get_project_directory(const std::string &project_name) -> std::stringstream
+auto Helpers::make_directory(
+    const std::stringstream &project_directory,
+    const std::string &directory_name) -> void
+{
+    std::stringstream new_folder_directory;
+    new_folder_directory << project_directory.str() << "/" << directory_name;
+    std::filesystem::create_directory(new_folder_directory.str());
+}
+
+auto Helpers::concat_project_directory(const std::string &project_name) -> std::stringstream
 {
     std::stringstream project_directory;
     project_directory << std::filesystem::current_path().c_str() << "/" << project_name;
@@ -59,18 +74,24 @@ auto Helpers::get_project_directory(const std::string &project_name) -> std::str
     return std::move(project_directory);
 }
 
-auto Helpers::get_src_directory(const std::stringstream &project_directory) -> std::stringstream
+auto Helpers::concat_src_directory(const std::stringstream &project_directory) -> std::stringstream
 {
-    std::stringstream src_directory;
-    src_directory << project_directory.str() << "/" << "src";
-
-    return std::move(src_directory);
+    return concat_new_directory(project_directory, "src");
 }
 
-auto Helpers::get_src_directory(const std::string &project_name) -> std::stringstream
+auto Helpers::concat_include_directory(const std::stringstream &project_directory) -> std::stringstream
 {
-    std::stringstream src_directory;
-    src_directory << get_project_directory(project_name).str() << "/src";
+    return concat_new_directory(project_directory, "include");
+}
 
-    return std::move(src_directory);
+auto Helpers::concat_new_directory(
+    const std::stringstream &project_directory,
+    const std::string_view &&name
+) -> std::stringstream
+{
+    std::stringstream new_directory;
+
+    new_directory << project_directory.str() << "/" << name;
+
+    return std::move(new_directory);
 }

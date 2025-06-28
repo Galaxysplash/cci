@@ -17,8 +17,4 @@ struct Program final
     static auto post_setup(
         const std::string &project_name,
         const std::stringstream &project_directory) -> void;
-
-    static auto create_folders(
-        const std::stringstream &project_directory,
-        const std::initializer_list<std::string> &folder_names) -> void;
 };
