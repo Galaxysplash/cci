@@ -1,0 +1,3 @@
+#pragma once
+
+constexpr const char *a = "#pragma once\n\n#include <cstdlib>\n#include <expected>\n#include <string_view>\n#include <vector>\n\ntemplate <typename T, typename Err>\nusing Result = std::expected<T, Err>;\n\nusing i8 = int_fast8_t;\nusing i16 = int_fast16_t;\nusing i32 = int_fast32_t;\nusing i64 = int_fast64_t;\n\nusing f32 = float;\nusing f64 = double;\n\nusing u8 = uint_fast8_t;\nusing u16 = uint_fast16_t;\nusing u32 = uint_fast32_t;\nusing u64 = uint_fast64_t;\n\nusing usize = size_t;\n\nusing str = std::string_view;\n\ntemplate <typename T>\nusing Vec = std::vector<T>;\n\nusing String = std::string;\n\nusing cstr = char *;\n\n#define let const auto\n#define var auto\n#define fn auto\n#define impl auto\n#define def const auto\n#define block struct\n";

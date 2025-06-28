@@ -1,0 +1,40 @@
+#pragma once
+
+#include <cstdlib>
+#include <expected>
+#include <string_view>
+#include <vector>
+
+template <typename T, typename Err>
+using Result = std::expected<T, Err>;
+
+using i8 = int_fast8_t;
+using i16 = int_fast16_t;
+using i32 = int_fast32_t;
+using i64 = int_fast64_t;
+
+using f32 = float;
+using f64 = double;
+
+using u8 = uint_fast8_t;
+using u16 = uint_fast16_t;
+using u32 = uint_fast32_t;
+using u64 = uint_fast64_t;
+
+using usize = size_t;
+
+using str = std::string_view;
+
+template <typename T>
+using Vec = std::vector<T>;
+
+using String = std::string;
+
+using cstr = char *;
+
+#define let const auto
+#define var auto
+#define fn auto
+#define impl auto
+#define def const auto
+#define block struct
