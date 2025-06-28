@@ -37,6 +37,7 @@ auto Program::setup(
 
     std::stringstream
         main_cpp_content;
+    
     {
         cmakelists_content << "cmake_minimum_required(VERSION 3.20)\nproject(" << project_name << ")\n\nset(CMAKE_CXX_STANDARD 23)\nset(CMAKE_CXX_STANDARD_REQUIRED ON)\n\ninclude_directories(include)\n\nfile(GLOB_RECURSE SOURCES src/*.cpp)\nadd_executable(${PROJECT_NAME}_exec ${SOURCES})\n";
         main_cpp_content
@@ -55,6 +56,7 @@ auto Program::setup(
             << ".vscode\nbuild\n";
 
         vcpkg_content << "{\n    \"name\": \"cci\",\n    \"version\": \"0.1.0\",\n    \"dependencies\": []\n}";
+
     }
     File global_files[] = {
         {"CMakeLists.txt", cmakelists_content.str()},
