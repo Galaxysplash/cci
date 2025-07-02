@@ -34,7 +34,7 @@ void Program::setup(const std::string &project_name) {
 
     main_cpp_content << "#include <iostream>\n\n"
                      << "int main(int argc, const char* argv[]) {\n"
-                     << "    std::cout << \"Hello World\\n\";\n"
+                     << "  std::cout << \"Hello World\\n\";\n"
                      << "}";
 
     readme_file_content << "# " << project_name << "\n\n## "
@@ -45,9 +45,9 @@ void Program::setup(const std::string &project_name) {
 
     dot_gitignore_content << "build\n";
 
-    vcpkg_content << "{\n    \"name\": \"" << project_name
-                  << "\",\n    \"version\": \"0.1.0\",\n    \"dependencies\": "
-                     "[\n\n    ]\n}";
+    vcpkg_content << "{\n  \"name\": \"" << project_name
+                  << "\",\n  \"version\": \"0.1.0\",\n  \"dependencies\": "
+                     "[\n\n  ]\n}";
   }
 
   File global_files[] = {{"CMakeLists.txt", cmakelists_content.str()},
