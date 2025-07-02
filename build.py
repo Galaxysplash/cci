@@ -58,9 +58,9 @@ for cmd in cmds:
 	execute_cmd(cmd[0], cmd[1])
 
 if windows:
-	if os.path.exists(f".\\build\\{project_name}_exec.exe"):
-		run([f".\\build\\{project_name}_exec.exe {testing_arguments}"], shell=True, check = True)
+	if os.path.exists(f".\\build\\{project_name}.exe"):
+		run([f".\\build\\{project_name}.exe {testing_arguments}"], shell=True, check = True)
 else:
-	if os.path.exists(f"./build/{project_name}_exec"):
-		run([f"./build/{project_name}_exec {testing_arguments}"], shell=True, check = True)
+	if os.path.exists(f"./build/{project_name}"):
+		run([f"./build/{project_name} {testing_arguments}"], shell=True, check = True)
 # end building code

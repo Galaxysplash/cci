@@ -3,15 +3,14 @@
 #include <string>
 #include <string_view>
 
-struct File
-{
-    File(const std::string &name, const std::string &content)
-        : _name(name), _content(content) {}
+struct File {
+public:
+  File(const std::string &&name, const std::string &&content);
 
-    auto get_name() -> const std::string &;
-    auto get_content() -> const std::string &;
+  const std::string &get_name() const;
+  const std::string &get_content() const;
 
 private:
-    const std::string _name;
-    const std::string _content;
+  const std::string m_name;
+  const std::string m_content;
 };

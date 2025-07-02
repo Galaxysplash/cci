@@ -1,11 +1,8 @@
 #include "file.hpp"
 
-auto File::get_name() -> const std::string &
-{
-    return _name;
-}
+File::File(const std::string &&name, const std::string &&content)
+    : m_name(std::move(name)), m_content(std::move(content)) {}
 
-auto File::get_content() -> const std::string &
-{
-    return _content;
-}
+const std::string &File::get_name() const { return m_name; }
+
+const std::string &File::get_content() const { return m_content; }
