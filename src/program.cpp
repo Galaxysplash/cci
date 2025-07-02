@@ -37,8 +37,7 @@ void Program::setup(const std::string &project_name) {
                      << "  std::cout << \"Hello World\\n\";\n"
                      << "}";
 
-    readme_file_content << "# " << project_name << "\n\n## "
-                        << "prerequisites\n"
+    readme_file_content << "# " << project_name << "\n\n## prerequisites\n"
                         << "->make<br>\n"
                         << "->vcpkg<br>\n"
                         << "->cmake<br>\n\n";

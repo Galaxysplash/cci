@@ -5,7 +5,7 @@ a small free and open source tool made for speeding up the process of creating a
 ->python3<br>
 ->git<br>
 ->make<br>
-->cmake 3.20 or higher<br>
+->cmake<br>
 
 ## build & run
 -> On Windows: 'python build.py'<br>
