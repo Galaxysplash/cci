@@ -33,7 +33,7 @@ void Program::setup(const std::string &project_name) {
         << "src/*.cpp)\nadd_executable(${PROJECT_NAME} ${SOURCES})\n";
 
     main_cpp_content << "#include <iostream>\n\n"
-                     << "int main(int argc, const char* argv[]) {\n"
+                     << "int main(int argc, const char *argv[]) {\n"
                      << "  std::cout << \"Hello World\\n\";\n"
                      << "}";
 
