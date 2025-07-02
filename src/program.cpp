@@ -68,4 +68,8 @@ void Program::setup(const std::string &project_name) {
     Helpers::create_file(project_directory.str(), global_file.get_name(),
                          global_file.get_content());
   }
+
+  Helpers::create_file(
+      Helpers::concat_include_directory(project_directory).str(),
+      src_file.get_name(), src_file.get_content());
 }
