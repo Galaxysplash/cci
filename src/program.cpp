@@ -55,8 +55,6 @@ void Program::setup(const std::string &project_name) {
                          {"README.md", readme_file_content.str()},
                          {"vcpkg.json", vcpkg_content.str()}};
 
-  File src_file = {"main.cpp", main_cpp_content.str()};
-
   Helpers::make_project_directory(project_directory);
 
   Helpers::make_directories(project_directory, {"build", "src", "include"});
@@ -69,7 +67,8 @@ void Program::setup(const std::string &project_name) {
                          global_file.get_content());
   }
 
-  Helpers::create_file(
-      Helpers::concat_include_directory(project_directory).str(),
-      src_file.get_name(), src_file.get_content());
+  File main_cpp_file = {"main.cpp", main_cpp_content.str()};
+
+  Helpers::create_file(Helpers::concat_src_directory(project_directory).str(),
+                       main_cpp_file.get_name(), main_cpp_file.get_content());
 }
