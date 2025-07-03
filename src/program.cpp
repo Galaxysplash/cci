@@ -44,9 +44,21 @@ void Program::setup(const std::string &project_name) {
 
     dot_gitignore_content << "build\n";
 
-    vcpkg_content << "{\n  \"name\": \"" << project_name
-                  << "\",\n  \"version\": \"0.1.0\",\n  \"dependencies\": "
-                     "[\n\n  ]\n}";
+    {
+      std::string vcpkg_projectname;
+
+      for (const char &c : project_name) {
+        if (c != '_') {
+          vcpkg_projectname.push_back(c);
+        } else {
+          vcpkg_projectname.push_back('-');
+        }
+      }
+
+      vcpkg_content << "{\n  \"name\": \"" << vcpkg_projectname
+                    << "\",\n  \"version\": \"0.1.0\",\n  \"dependencies\": "
+                       "[\n\n  ]\n}";
+    }
   }
 
   File global_files[] = {{"CMakeLists.txt", cmakelists_content.str()},
