@@ -2,10 +2,18 @@
 #include "helpers.hpp"
 #include "program.hpp"
 
+#include <expected>
 #include <iostream>
 
-int main(int argc, const char **argv) {
-  if (Helpers::check_args(argc)) {
-    Program::execute(argv[1]);
+int main(int argc, const char *argv[]) {
+  /*
+  std::expected<std::string, std::string> result =
+      Helpers::check_args(argc, argv);
+
+  if (result) {
+    Program::execute(*result);
+  } else {
+    std::cerr << result.error() << "\n";
   }
+  */
 }

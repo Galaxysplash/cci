@@ -3,12 +3,13 @@
 #include <iostream>
 #include <sstream>
 
-bool Helpers::check_args(const int argc) {
+std::expected<std::string, std::string>
+Helpers::check_args(const int argc, const char *argv[]) {
   std::stringstream error_message;
 
   switch (argc) {
   case 2:
-    return true;
+    return argv[1];
   case 1:
     error_message
         << "sorry. no project name given.\n"
@@ -24,7 +25,7 @@ bool Helpers::check_args(const int argc) {
     break;
   }
 
-  return false;
+  return std::unexpected(error_message.str());
 }
 
 void Helpers::make_project_directory(

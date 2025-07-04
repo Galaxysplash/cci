@@ -1,5 +1,6 @@
 #pragma once
 
+#include <expected>
 #include <filesystem>
 #include <fstream>
 #include <sstream>
@@ -7,7 +8,8 @@
 
 class Helpers {
 public:
-  static bool check_args(const int argc);
+  static std::expected<std::string, std::string> check_args(const int argc,
+                                                            const char *argv[]);
 
   static void create_file(const std::string &project_dir,
                           const std::string &file_name,
